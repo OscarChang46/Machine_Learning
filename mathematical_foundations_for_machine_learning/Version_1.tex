@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage{STAT210B_HW}
+
+
+
+\def\cO{{\mathcal O}}
+\def\cP{{\mathcal P}}
+\def\cW{{\mathcal W}}
+\def\sW{{\mathsf W}}
+\def\bvphi{{\boldsymbol \vphi}}
+\def\W{{\mathbb W}}
+\def\ddiag{{\rm ddiag}}
+\def\bX{{\boldsymbol X}}
+\def\KR{{\rm KR}}
+\def\hba{{\hat {\boldsymbol a}}}
+\def\hf{{\hat f}}
+\def\sM{{\mathsf M}}
+\def\bbHe{{\rm He}}
+\def\tcT{\widetilde{\mathcal T}}
+\def\endd{{\rm end}}
+\def\bi{{\boldsymbol i}}
+\def\cT{{\mathcal T}}
+\def\cC{{\mathcal C}}
+\def\bj{{\boldsymbol j}}
+\def\cQ{{\mathcal Q}}
+\def\sk{{\rm sk}}
+\def\bk{{\boldsymbol k}}
+\def\T{{\mathbb T}}
+\def\K{{\mathbb K}}
+\def\H{{\mathbb H}}
+\def\cL{{\mathcal L}}
+
+\def\bw{{\boldsymbol w}}
+\def\de{{\rm d}}
+\def\bx{{\boldsymbol x}}
+\def\by{{\boldsymbol y}}
+\def\bW{{\boldsymbol W}}
+\def\ba{{\boldsymbol a}}
+\def\cF{{\mathcal F}}
+\def\Unif{{\sf Unif}}
+\def\normal{{\sf N}}
+\def\bU{{\boldsymbol U}}
+\def\bV{{\boldsymbol V}}
+\def\bM{{\boldsymbol M}}
+\def\bZ{{\boldsymbol Z}}
+
+\def\bz{{\boldsymbol z}}
+\def\proj{{\mathsf P}}
+\def\He{{\rm He}}
+\def\cE{{\mathcal E}}
+\def\tK{\widetilde{K}}
+
+\def\stest{\mbox{\tiny\rm test}}
+\def\bdelta{{\boldsymbol\delta}}
+\def\Trace{{\rm Tr}}
+
+\def\bbeta{{\boldsymbol \beta}}
+\def\bDelta{{\boldsymbol \Delta}}
+\def\bB{{\boldsymbol B}}
+
+\def\lin{{\rm lin}}
+\def\res{{\rm res}}
+\def\degzero{{\rm deg0}}
+\def\degone{{\rm deg1}}
+
+\def\be{{\boldsymbol e}}
+\def\bu{{\boldsymbol u}}
+\def\bg{{\boldsymbol g}}
+\def\Poly{{\rm Poly}}
+
+\def\ik{{\mathsf k}}
+\def\il{{\mathsf l}}
+
+\def\sM{{\sf M}}
+
+\def\bA{{\boldsymbol A}}
+\def\bD{{\boldsymbol D}}
+\def\bb{{\boldsymbol b}}
+\def\bv{{\boldsymbol v}}
+\def\bxi{{\boldsymbol \xi}}
+\def\btheta{{\boldsymbol \theta}}
+\def\bTheta{{\boldsymbol \Theta}}
+\def\Poly{{\rm Poly}}
+\def\Coeff{{\rm Coeff}}
+
+\def\bfone{{\boldsymbol 1}}
+
+\def\RKHS{{\sf RKHS}}
+\def\RF{{\sf RF}}
+\def\NT{{\sf NT}}
+\def\NN{{\sf NN}}
+\def\reals{{\mathbb R}}
+\def\integers{{\mathbb Z}}
+\def\naturals{{\mathbb N}}
+
+
+\def\bw{{\boldsymbol w}}
+\def\de{{\rm d}}
+\def\bx{{\boldsymbol x}}
+\def\by{{\boldsymbol y}}
+\def\bW{{\boldsymbol W}}
+\def\ba{{\boldsymbol a}}
+\def\cF{{\mathcal F}}
+\def\Unif{{\rm Unif}}
+\def\bU{{\boldsymbol U}}
+\def\bV{{\boldsymbol V}}
+\def\bz{{\boldsymbol z}}
+\def\proj{{\mathsf P}}
+\def\He{{\rm He}}
+\def\cE{{\mathcal E}}
+\def\bt{{\boldsymbol t}}
+\def\normal{{\sf N}}
+
+\def\bDelta{{\boldsymbol \Delta}}
+
+\def\lin{{\rm lin}}
+\def\res{{\rm res}}
+\def\degzero{{\rm deg0}}
+\def\degone{{\rm deg1}}
+
+\def\be{{\boldsymbol e}}
+\def\bu{{\boldsymbol u}}
+\def\bg{{\boldsymbol g}}
+\def\btheta{{\boldsymbol \theta}}
+\def\Poly{{\rm Poly}}
+\def\Coeff{{\rm Coeff}}
+\def\bh{{\boldsymbol h}}
+
+\def\RF{{\rm RF}}
+\def\NT{{\rm NT}}
+\def\bA{{\boldsymbol A}}
+\def\bH{{\boldsymbol H}}
+
+\def\cS{{\mathcal S}}
+\def\Cyc{{\rm Cyc}}
+\def\cI{{\mathcal I}}
+\def\RC{{\rm RC}}
+
+\def\GOE{{\rm GOE}}
+\def\bW{{\boldsymbol W}}
+\def\bY{{\boldsymbol Y}}
+\def\bu{{\boldsymbol u}}
+\def\std{{\rm std}}
+\def\blambda{{\boldsymbol \lambda}}
+\def\cB{{\mathcal B}}
+
+\def\bsigma{{\boldsymbol \sigma}}
+\def\bmu{{\boldsymbol \mu}}
+\def\bSigma{{\boldsymbol \Sigma}}
+
+\def\Var{\text{Var}}
+
+
+
+%%%% Eric macros
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+
+\newcommand{\frobnorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}_F}
+\newcommand{\specnorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}_2}
+\newcommand{\bigOh}{\mathcal{O}}
+
+
+%% the format for the lecture environment is
+% \begin{lecture}{lecture number}{lecture title}{scribe(s)}{lecture date}
+\begin{lecture}{1}{Mathematical Foundation for Machine Learning}{Scriber: Cong Zhang.          }
+
+
+
+\section{Calculus}
+
+\section{Linear Algebra}
+
+\section{Optimization Foundation}
+\end{lecture}
+\theend

@@ -1,0 +1,224 @@
+%% Style file for STAT260
+%%
+%% Shamelessly copied from:
+%%   http://theory.lcs.mit.edu/classes/6.895/fall03/scribe/
+%%
+%% Ciamac Moallemi, 11 January 2007
+
+\def\fileversion{1.0}
+\def\filedate{2007/01/11}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mse339}[\filedate{} macros for the MS&E 339 class at Stanford]
+
+\usepackage{latexsym}
+\usepackage{bbm}
+\usepackage[small,bf]{caption2}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{url}
+\usepackage{hyperref}
+
+
+%% Page size
+
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+%% Misc
+
+% Some hacks to make HTML happier.
+\newcommand{\vskipargs}[1]{\vskip #1}
+\newcommand{\newproc}{\hrule\vskipargs{1ex plus 0.1ex minus 0.1ex}}
+
+% Tilde for webstuff
+\newcommand{\webtilde}{\raisebox{-.8ex}\~}
+
+% Comment out chunks.
+\newcommand{\punt}[1]{}
+\newcommand{\remove}[1]{}
+
+% Footnote commands.
+\newcommand{\footnotenonumber}[1]{{\def\thempfn{}\footnotetext{#1}}}
+\newcommand{\footnotetight}[1]{\footnote{\renewcommand\baselinestretch{1}\footnotesize #1}}
+
+% Commands for handout headers
+\newcommand{\handout}[5]{
+%   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{ \vbox{ \hbox to 5.78in { {\bf } \hfill #5 }
+       \vspace{4mm}
+       \hbox to 5.78in { {\Large \hfill #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 5.78in { {\it #3 \hfill #4} }
+     }
+   }
+   \end{center}
+   \vspace*{4mm}
+   \newcommand{\lecturenum}{#1}
+   \addcontentsline{toc}{chapter}{Homework #1 -- #2}
+}
+
+\newcommand{\lecturetitle}[3]{\handout{#1}{#2}{#3}}
+\newcommand{\guestlecturetitle}[5]{\handout{#1}{#2}{Lecturer:
+    #4}{Scribe: #3}{Lecture #1 - #5}}
+
+% Assorted theorem/proof environments
+
+%% \newtheorem{theorem}{Theorem}[chapter]
+%\newtheorem{thm}{Theorem}
+%\newtheorem{corollary}[thm]{Corollary}
+%\newtheorem{lemma}[thm]{Lemma}
+%\newtheorem{observation}[thm]{Observation}
+%\newtheorem{proposition}[thm]{Proposition}
+%\newtheorem{definition}[thm]{Definition}
+%\newtheorem{claim}[thm]{Claim}
+%\newtheorem{fact}[thm]{Fact}
+%\newtheorem{assumption}[thm]{Assumption}
+%
+%\renewenvironment{proof}{\noindent{\bf Proof}\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{proof-sketch}{\noindent{\bf Sketch of Proof}\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{proof-idea}{\noindent{\bf Proof Idea}\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{proof-of-lemma}[1]{\noindent{\bf Proof of Lemma #1}\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{proof-attempt}{\noindent{\bf Proof Attempt}\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{proofof}[1]{\noindent{\bf Proof} of #1:\hspace*{1em}}{\qed\bigskip\\}
+%\newenvironment{remark}{\noindent{\bf Remark}\hspace*{1em}}{\bigskip}
+
+% Figure/Tables Stuff
+
+%\makeatletter
+%\def\fnum@figure{{\bf Figure \thefigure}}
+%\def\fnum@table{{\bf Table \thetable}}
+%\long\def\@mycaption#1[#2]#3{\addcontentsline{\csname
+%  ext@#1\endcsname}{#1}{\protect\numberline{\csname 
+%  the#1\endcsname}{\ignorespaces #2}}\par
+%  \begingroup
+%    \@parboxrestore
+%    \small
+%    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+%  \endgroup}
+%\def\mycaption{\refstepcounter\@captype \@dblarg{\@mycaption\@captype}}
+%\makeatother
+
+%\def\implies{\Rightarrow}
+%\def\sizeof#1{\left| #1\right|}
+%\def\setof#1{\left\{ #1\right\}  }
+%
+%%% Math Stuff, Symbols
+%\newcommand{\field}[1]{\mathbb{#1}}
+%\newcommand{\N}{\field{N}} % natural numbers
+%\newcommand{\R}{\field{R}} % real numbers
+%\newcommand{\Z}{\field{Z}} % integers                 
+%\renewcommand{\Re}{\R} % reals
+%\newcommand{\1}{{\bf 1}} % vector of all 1's
+%\newcommand{\I}[1]{\mathbb{I}_{\left\{#1\right\}}} % indicator function
+%\newcommand{\tends}{{\rightarrow}} % arrow for limits
+%\newcommand{\ra}{{\rightarrow}} % abbreviation for right arrow
+%\newcommand{\prob}{{\mathbb P}} % probability
+%\newcommand{\E}{{\mathbb E}} % expectation
+%\newcommand{\subjectto}{\mbox{\rm subject to}} % subject to
+%\newcommand{\norm}[1]           {\left\| #1\right\|}
+%\newcommand{\card}[1]           {\left| #1\right|}
+%% some caligraphic symbols
+%
+%\def\<{\langle}
+%\def\>{\rangle}
+%\def\cX{{\cal X}}
+%\def\ve{\varepsilon}
+%\def\Var{{\rm Var}}
+%\def\reals{{\mathbb R}}
+%%% math operators
+%\newcommand\argmin{\mathop{\mbox{{\rm argmin}}}\limits}
+%\newcommand\argmax{\mathop{\mbox{{\rm argmax}}}\limits}
+%\newcommand\maximize{\mathop{\mbox{{\rm maximize}}}\limits}
+%\newcommand\minimize{\mathop{\mbox{{\rm minimize}}}\limits}
+
+
+
+\newenvironment{lecture}[4]{\begin{document}
+    \lecturetitle{#1}{#2}{#3}}{}
+
+\newcommand{\theend}{\end{document}}
+
+
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\cN}{\mathcal{N}}
+
+% Sets
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\S}{\mathbb{S}}
+\def\ball{{\mathsf B}}
+
+% Variables
+\newcommand{\eps}{\varepsilon} 
+\newcommand{\vphi}{\varphi}
+\def\id{{\mathbf I}}
+
+
+% Math
+\renewcommand{\d}{\textup{d}}
+\renewcommand{\l}{\vert}
+\newcommand{\dl}{\Vert}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\sign}{\text{sign}}
+\newcommand{\diag}{\text{\rm diag}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\op}{{\rm op}}
+\newcommand{\ones}{\bm{1}}
+\newcommand{\what}{\widehat}
+\newcommand{\grad}{\nabla}
+\def\sT{{\mathsf T}}
+\def\bzero{{\boldsymbol 0}}
+
+
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator*{\arginf}{arg\,inf}
+\newcommand{\eqnd}{\, {\buildrel d \over =} \,} 
+\newcommand{\eqndef}{\mathrel{\mathop:}=}
+\def\doteq{{\stackrel{\cdot}{=}}}
+\newcommand{\goto}{\longrightarrow}
+\newcommand{\gotod}{\buildrel d \over \longrightarrow} 
+\newcommand{\gotoas}{\buildrel a.s. \over \longrightarrow} 
+\def\simiid{{\stackrel{i.i.d.}{\sim}}}
+
+
+% Notations 
+%\newcommand{\notate}[1]{\textcolor{red}{\textbf{[#1]}}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+
+
+% Theorem
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{question}{Question}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{property}{Property}
+\newtheorem{objective}{Objective}
+\newtheorem{claim}{Claim}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+
+\theoremstyle{definition}
+
+
